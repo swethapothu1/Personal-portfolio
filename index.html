@@ -1,283 +1,292 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Responsive queries -->
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <!-- Particle background (animated dots) -->
-    <div id="particles-js"></div>
-
-    <!-- Desktop Navigation Bar -->
-    <nav id="desktop-nav" aria-label="Main Navigation">
-      <div class="logo">SP</div>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <!-- Mobile Navigation Bar -->
-    <nav id="hamburger-nav" aria-label="Mobile Navigation">
-      <div class="logo">SP</div>
-      <div class="hamburger-menu">
-        <button class="hamburger-icon" id="hamburger-icon" aria-label="Open menu" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="menu-links" id="menu-links" role="menu">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swetha Pothu - Data Analytics & Digital Marketing</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* FLOATING CERTIFICATE ANIMATION */
+        @keyframes floatCert {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Black Background with City Lights -->
+    <div class="fluid-background">
+        <div class="city-lights">
+            <div class="light light-1"></div>
+            <div class="light light-2"></div>
+            <div class="light light-3"></div>
+            <div class="light light-4"></div>
+            <div class="light light-5"></div>
+            <div class="light light-6"></div>
+            <div class="light light-7"></div>
+            <div class="light light-8"></div>
+            <div class="light light-9"></div>
+            <div class="light light-10"></div>
+            <div class="light light-11"></div>
+            <div class="light light-12"></div>
+            <div class="light light-13"></div>
+            <div class="light light-14"></div>
+            <div class="light light-15"></div>
+        </div>
+    </div>
+    
+    <!-- Cursor Followers and Floating Elements -->
+    <div class="cursor-follower"></div>
+    <div class="cursor-follower-2"></div>
+    <div class="floating-blue"></div>
+    <div class="floating-green"></div>
+    <div class="floating-pink"></div>
+    <div class="floating-orange"></div>
+    <div class="floating-purple"></div>
+    
+    <!-- Navigation -->
+    <!-- Navigation -->
+<nav id="navbar" style="padding: 5px 5% !important; height: auto !important;">
+    <div class="nav-container">
+        <!-- MORE VISIBLE LOGO WITH GLOW EFFECT AND THINNER BAR -->
+        <a href="#home" class="logo" style="display: inline-block;">
+            <img src="assets/logo.png" alt="Swetha Pothu Logo" style="height: 120px !important; width: auto !important; filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.5)) !important;">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-      </div>
-    </nav>
-
-    <!-- Profile Section -->
-    <section id="profile" aria-label="Profile">
-      <div class="section__pic-container">
-        <!-- Profile picture -->
-        <img src="./assets/profile-pic.png" alt="Swetha Pothu profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Swetha Pothu</h1>
-        <p class="section__text__p2">Data Analyst</p>
-        <div class="btn-container">
-          <button class="btn btn-color-2" onclick="window.open('./assets/swetha_resume.pdf')">Download CV</button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
+    </div>
+</nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hello, I'm<br>Swetha Pothu</h1>
+            <p>Data Analytics & Digital Marketing</p>
+            <a href="#projects" class="cta-button">View My Work</a>
         </div>
-        <!-- Social icons -->
-        <div id="socials-container">
-          <img src="./assets/linkedin.png" alt="LinkedIn profile" class="icon" onclick="location.href='https://www.linkedin.com/in/pothu-swetha-63246b203/'" aria-label="LinkedIn"/>
-          <img src="./assets/github.png" alt="Github profile" class="icon" onclick="location.href='https://github.com/pothu14'" aria-label="Github"/>
-          <img src="./assets/tableau.png" alt="Tableau profile" class="icon" onclick="location.href='https://public.tableau.com/app/profile/swetha.pothu/vizzes'" aria-label="Tableau"/>
-        </div>
-      </div>
     </section>
-
+    
     <!-- About Section -->
-    <section id="about" aria-label="About Me">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container_1">
-          <!-- About picture -->
-          <img src="./assets/white background (1).png" alt="About Swetha Pothu" class="about-pic" loading="eager" decoding="sync" fetchpriority="high" />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <!-- Experience Card -->
-            <div class="details-container">
-              <img src="./assets/experience.png" alt="Experience icon" class="icon" />
-              <h3>Experience</h3>
-              <p>2+ years <br />Data Analyst</p>
+    <section id="about" class="content-section">
+        <h2 class="fade-in">About Me</h2>
+        <div class="about-content">
+            <div class="about-image fade-in">
+                <img src="assets/about-pic.png" alt="Swetha Pothu" class="profile-image">
             </div>
-            <!-- Education Card -->
-            <div class="details-container">
-              <img src="./assets/education.png" alt="Education icon" class="icon" />
-              <h3>Education</h3>
-              <p>M.S. Masters Degree<br />B.Sc. Bachelors Degree</p>
+            <div class="about-text fade-in">
+                <p>Business analytics enthusiast with a masters from Clark University, skilled at</p>
+                <p>turning complex data into clear, actionable insights. I specialize in driving growth</p>
+                <p>through data-driven strategies in digital marketing, revenue optimization, and KPI</p>
+                <p>design. Creative and detail-oriented, I thrive on solving challenges that blend</p>
+                <p>numbers with real-world impact.</p>
             </div>
-          </div>
-          <div class="text-container">
-            <p>
-              Business analytics enthusiast with a masters from Clark University, skilled at turning complex data into clear, actionable insights. I specialize in driving growth through data-driven strategies in digital marketing, revenue optimization, and KPI design. Creative and detail-oriented, I thrive on solving challenges that blend numbers with real-world impact.
-            </p>
-          </div>
         </div>
-      </div>
-      <!-- Down arrow to next section -->
-      <img src="./assets/arrow.png" alt="Scroll to Experience" class="icon arrow" onclick="location.href='./#experience'" />
     </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="details-container" aria-label="Professional Experience">
-      <h2 class="title">Professional Experience</h2>
-      <div class="about-containers">
-        <!-- Experience 1 -->
-        <div class="about-details-container">
-          <h3>IKS Health (Inventurus Knowledge Solutions Pvt Ltd)</h3>
-          <p><em>Revenue Cycle Representative AR</em> — Hyderabad, India<br><strong>June 2021 – Dec 2021</strong></p>
-          <ul>
-            <li>Managed AR processes for US healthcare clients, ensuring timely and accurate billing and collections.</li>
-            <li>Analyzed denied claims and resolved discrepancies, reducing outstanding AR days.</li>
-            <li>Collaborated to verify insurance data, improving claim acceptance rates.</li>
-            <li>Monitored revenue cycle metrics and recommended process improvements.</li>
-            <li>Maintained HIPAA compliance handling sensitive patient info.</li>
-          </ul>
-        </div>
-        <!-- Experience 2 -->
-        <div class="about-details-container">
-          <h3>Wipro</h3>
-          <p><em>Data Analyst (Google Shopping Process)</em> — Hyderabad, India<br><strong>Sep 2019 – 2020</strong></p>
-          <ul>
-            <li>Optimized Google Shopping listings using large datasets of product attributes and search trends.</li>
-            <li>Prepared performance reports to improve ad placements and CTR.</li>
-            <li>Coordinated with marketing/product teams to strengthen listings’ relevance.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
+    
     <!-- Skills Section -->
-    <section id="skills" class="details-container" aria-label="Skills and Certifications">
-      <h2 class="title">Skills</h2>
-      <div class="about-containers">
-        <div class="about-details-container">
-          <ul>
-            <li><strong>Programming & Data Tools:</strong> Python, R, SQL, Tableau, KNIME</li>
-            <li><strong>Analytics Skills:</strong> Predictive Analytics, Regression, Classification, Neural Networks, Data Visualization, Statistical Analysis, A/B Testing</li>
-            <li><strong>Digital Marketing:</strong> Google Analytics (GA4), SEO, Campaign Design, Web Traffic Optimization, Social Media Marketing</li>
-            <li><strong>Business & Strategy:</strong> Market Segmentation & Targeting, Consumer Behavior Analysis, ROI Analysis, Sales Forecasting, Data-Driven Decision Making</li>
-          </ul>
+    <section id="skills">
+        <h2 class="fade-in">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <h3>Data Analytics & ML</h3>
+                <p>Python, R, SQL, Statistical Analysis, Predictive Modeling, Machine Learning, Time Series Analysis</p>
+            </div>
+            <div class="skill-card fade-in">
+                <h3>Digital Marketing</h3>
+                <p>Google Analytics 4, A/B Testing, Campaign Optimization, SEO, ROI Analysis, Customer Behavior</p>
+            </div>
+            <div class="skill-card fade-in">
+                <h3>Business Intelligence</h3>
+                <p>Tableau, Data Visualization, KPI Development, Revenue Cycle Management, Dashboard Design</p>
+            </div>
+            <div class="skill-card fade-in">
+                <h3>Market Research</h3>
+                <p>Survey Design, Market Segmentation, Consumer Analysis, Competitive Intelligence</p>
+            </div>
         </div>
-        <div class="about-details-container navy-text">
-          <h3>Certifications</h3>
-          <ul>
-            <li><a href="./assets/Google Analytics Certification _ Google.pdf" target="_blank" rel="noopener">Google Analytics 4</a></li>
-            <li><a href="./assets/RCR_BASIC.pdf" target="_blank" rel="noopener">RCR (CITI Program)</a></li>
-            <li><a href="./assets/Digital Marketing Smintership Certificate.pdf" target="_blank" rel="noopener">Stukent Digital Marketing</a></li>
-          </ul>
-        </div>
-      </div>
     </section>
-
+    
+    <!-- Certifications Section -->
+    <section id="certifications" class="content-section">
+        <h2 class="fade-in">Certifications</h2>
+        <div class="certifications-grid">
+            <div class="cert-card fade-in">
+                <!-- FLOATING CERTIFICATE IMAGE -->
+                <img src="assets/google analytics image.png" alt="Google Analytics Certificate" class="cert-img" style="animation: floatCert 3s ease-in-out infinite; width: 120px !important; height: 120px !important; object-fit: contain; display: block; margin: 0 auto 20px;">
+                <h3>Google Analytics 4 Certification</h3>
+                <div class="cert-issuer">Google</div>
+                <div class="cert-date">Completed: November 30, 2023</div>
+                <div class="cert-date">Expires: November 30, 2024</div>
+                <div><a href="assets/google analytics image.png" target="_blank">View Certificate</a></div>
+            </div>
+            <div class="cert-card fade-in">
+                <!-- FLOATING CERTIFICATE IMAGE -->
+                <img src="assets/digital image.png" alt="Digital Marketing Simternship Certificate" class="cert-img" style="animation: floatCert 3s ease-in-out infinite; animation-delay: 0.5s; width: 120px !important; height: 120px !important; object-fit: contain; display: block; margin: 0 auto 20px;">
+                <h3>Digital Marketing Simternship</h3>
+                <div class="cert-issuer">Stukent</div>
+                <div class="cert-date">Completed: December 07, 2023</div>
+                <div><a href="assets/rcr image.png" target="_blank">View Certificate</a></div>
+            </div>
+            <div class="cert-card fade-in">
+                <!-- FLOATING CERTIFICATE IMAGE -->
+                <img src="assets/rcr image.png" alt="RCR CITI Certificate" class="cert-img" style="animation: floatCert 3s ease-in-out infinite; animation-delay: 1s; width: 120px !important; height: 120px !important; object-fit: contain; display: block; margin: 0 auto 20px;">
+                <h3>Responsible Conduct of Research (RCR)</h3>
+                <div class="cert-issuer">CITI Program - Clark University</div>
+                <div class="cert-date">Completed: February 24, 2024</div>
+                <div class="cert-date">Expires: February 24, 2027</div>
+                <div><a href="assets/RCR_BASIC+HUMAN_SUBJECTS_MKT_5401_1_POTHU_SWETHA.pdf" target="_blank">View Certificate</a></div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Projects Section -->
-    <section id="projects" aria-label="Projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <!-- Project 1 -->
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/project-1.jpg" alt="Airbnb Price Prediction project" class="project-img" />
+    <section id="projects" class="content-section">
+        <h2 class="fade-in">Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Airline Project Card -->
+            <div class="project-card fade-in">
+                <!-- FIXED PROJECT IMAGE -->
+                <div class="project-image" style="background: url('assets/project\ -5.png') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
+                <div class="project-content">
+                    <h3>Airline In-Flight Catering Analysis</h3>
+                    <p>Comprehensive survey-based analysis of passenger satisfaction comparing Delta and American Airlines using advanced statistics.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Excel</span>
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">R</span>
+                        <span class="tech-tag">Statistical Analysis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://public.tableau.com/views/AirlineMarketingCampaignPassengerPreferencesSatisfaction/Dashboard1" target="_blank">View on Tableau →</a>
+                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
             </div>
-            <h2 class="experience-sub-title project-title">Airbnb Price Prediction</h2>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/pothu14/'">Github</button>
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://public.tableau.com/views/AirbnbNYCPricePredictionAnalytics/AirbnbNYCPriceAvailabilityListingInsights'">Tableau</button>
+            <!-- Bitcoin Project Card -->
+            <div class="project-card fade-in">
+                <!-- FIXED PROJECT IMAGE -->
+                <div class="project-image" style="background: url('assets/project-2.jpg') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
+                <div class="project-content">
+                    <h3>Bitcoin Price Prediction & Volatility</h3>
+                    <p>Analyzed 4.8M+ minute-level Bitcoin trades to identify patterns and volatility zones with interactive dashboards.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Time Series</span>
+                        <span class="tech-tag">Machine Learning</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://public.tableau.com/views/BitcoinPriceStrategyVolatilityDashboard20122021/Dashboard1" target="_blank">View on Tableau →</a>
+                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- Project 2 -->
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/project-2.jpg" alt="Bitcoin Price Strategy project" class="project-img" />
+            <!-- Airbnb Project Card -->
+            <div class="project-card fade-in">
+                <!-- FIXED PROJECT IMAGE -->
+                <div class="project-image" style="background: url('assets/project-1.jpg') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
+                <div class="project-content">
+                    <h3>Airbnb NYC Price Prediction</h3>
+                    <p>Built predictive models using Random Forest (93% accuracy) for NYC Airbnb listings with interactive map visualization.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">R</span>
+                        <span class="tech-tag">Random Forest</span>
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Linear Regression</span>
+                        <span class="tech-tag">Data Visualization</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://public.tableau.com/views/AirbnbNYCPricePredictionAnalytics/AirbnbNYCPriceAvailabilityListingInsights" target="_blank">View on Tableau →</a>
+                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
             </div>
-            <h2 class="experience-sub-title project-title">Bitcoin Price Strategy</h2>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/pothu14/'">Github</button>
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://public.tableau.com/views/BitcoinPriceStrategyVolatilityDashboard20122021/Dashboard1'">Tableau</button>
+            <!-- Inventory Project Card -->
+            <div class="project-card fade-in">
+                <!-- FIXED PROJECT IMAGE -->
+                <div class="project-image" style="background: url('assets/project-3.jpg') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
+                <div class="project-content">
+                    <h3>Inventory Management Dashboard</h3>
+                    <p>Dashboard monitoring product stock levels, reorder thresholds, and category-specific distribution.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Tableau</span>
+                        <span class="tech-tag">Data Visualization</span>
+                        <span class="tech-tag">KPI Metrics</span>
+                        <span class="tech-tag">Business Intelligence</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://public.tableau.com/views/InventoryManagementSystemDashboard/InventoryManagementDashboard" target="_blank">View on Tableau →</a>
+                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <!-- Project 3 -->
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img src="./assets/project-3.jpg" alt="Inflight Catering project" class="project-img" />
+            <!-- Shopify Project Card -->
+            <div class="project-card fade-in">
+                <!-- FIXED PROJECT IMAGE -->
+                <div class="project-image" style="background: url('assets/project-4.png') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
+                <div class="project-content">
+                    <h3>Shopify E-Commerce Growth Strategy</h3>
+                    <p>Managed Shopify store, increased traffic by 40% and engagement by 25% through conversion optimization and campaigns.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Shopify</span>
+                        <span class="tech-tag">Digital Marketing</span>
+                        <span class="tech-tag">Conversion Optimization</span>
+                        <span class="tech-tag">Social Media</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://public.tableau.com/views/InventoryManagementSystemDashboard/InventoryManagementDashboard" target="_blank">View on Tableau →</a>
+                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
             </div>
-            <h2 class="experience-sub-title project-title">Inflight Catering</h2>
-            <div class="btn-container">
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/pothu14'">Github</button>
-              <button class="btn btn-color-2 project-btn" onclick="location.href='https://public.tableau.com/views/AirlineMarketingCampaignPassengerPreferencesSatisfaction/Dashboard1'">Tableau</button>
-            </div>
-          </div>
         </div>
-      </div>
-      <!-- Down arrow to contact section -->
-      <img src="./assets/arrow.png" alt="Scroll to Contact" class="icon arrow" onclick="location.href='./#contact'" />
     </section>
-
+    
     <!-- Contact Section -->
-    <section id="contact" aria-label="Contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img src="./assets/email.png" alt="Email icon" class="icon contact-icon email-icon" />
-          <p><a href="mailto:swethapothu99@gmail.com">E-Mail</a></p>
+    <section id="contact" class="contact-section">
+        <h2 class="fade-in">Let's Connect</h2>
+        <div class="contact-grid">
+            <a href="mailto:swethapothu99@gmail.com" class="contact-item">
+                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#3b82f6">
+                    <rect x="10" y="30" width="80" height="50" rx="5" fill="none" stroke="#3b82f6" stroke-width="3"/>
+                    <path d="M15 35 L50 55 L85 35" stroke="#3b82f6" stroke-width="3" fill="none"/>
+                </svg>
+                <span>Email</span>
+            </a>
+            <a href="tel:774-519-0176" class="contact-item">
+                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#10b981">
+                    <rect x="30" y="15" width="40" height="70" rx="8" fill="none" stroke="#10b981" stroke-width="3"/>
+                    <circle cx="50" cy="75" r="3" fill="#10b981"/>
+                    <line x1="35" y1="25" x2="65" y2="25" stroke="#10b981" stroke-width="2"/>
+                </svg>
+                <span>Phone</span>
+            </a>
+            <a href="https://www.linkedin.com/in/pothu-swetha-63246b203/" class="contact-item" target="_blank">
+                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#0e76a8">
+                    <rect x="15" y="15" width="70" height="70" rx="10" fill="#0e76a8"/>
+                    <rect x="25" y="40" width="10" height="30" fill="white"/>
+                    <circle cx="30" cy="30" r="5" fill="white"/>
+                    <path d="M45 40 L45 70 L55 70 L55 55 C55 50 58 47 62 47 C66 47 67 50 67 55 L67 70 L77 70 L77 52 C77 42 72 38 65 38 C60 38 55 41 55 41 L55 40 Z" fill="white"/>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/pothu14" class="contact-item" target="_blank">
+                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#333">
+                    <circle cx="50" cy="50" r="35" fill="#333"/>
+                    <path d="M50 20 C33 20 20 33 20 50 C20 63 28 75 40 78 L40 65 C35 66 32 63 31 59 C30 56 28 55 28 55 C27 54 29 54 30 55 C33 56 35 59 36 61 C38 65 42 64 44 63 C44 61 45 59 47 58 C38 57 30 53 30 42 C30 38 32 35 35 33 C34 32 32 28 36 23 C36 23 39 22 44 26 C46 25 48 25 50 25 C52 25 54 25 56 26 C61 22 64 23 64 23 C68 28 66 32 65 33 C68 35 70 38 70 42 C70 53 62 57 53 58 C55 59 56 62 56 65 L56 78 C68 75 80 63 80 50 C80 33 67 20 50 20 Z" fill="white"/>
+                </svg>
+                <span>GitHub</span>
+            </a>
         </div>
-        <div class="contact-info-container">
-          <img src="./assets/linkedin.png" alt="LinkedIn icon" class="icon contact-icon" />
-          <p><a href="https://www.linkedin.com/in/pothu-swetha-63246b203/">LinkedIn</a></p>
-        </div>
-      </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <nav aria-label="Footer Navigation">
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <p>Copyright &#169; 2025 Swetha Pothu. All Rights Reserved.</p>
-    </footer>
-
-    <!-- Particle.js library -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-particlesJS("particles-js", {
-  "particles": {
-    "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-    "color": { "value": "#ff3cac" },
-    "shape": { "type": "circle" },
-    "opacity": { "value": 0.7, "random": false },
-    "size": { "value": 3, "random": true },
-    "line_linked": {
-      "enable": true,
-      "distance": 150,
-      "color": "#ff3cac",
-      "opacity": 0.5,
-      "width": 1.5
-    },
-    "move": {
-      "enable": true,
-      "speed": 2,
-      "direction": "none",
-      "random": false,
-      "straight": false,
-      "out_mode": "out"
-    }
-  },
-  "interactivity": {
-    "detect_on": "canvas",
-    "events": {
-      "onhover": { "enable": true, "mode": "grab" },
-      "onclick": { "enable": false }
-    },
-    "modes": {
-      "grab": { "distance": 200, "line_linked": { "opacity": 0.8 } }
-    }
-  },
-  "retina_detect": true
-});
-</script>
-    <!-- Your custom JS -->
-    <script src="script.jss"></script>
-    <!-- Optionally, add a11y improvements and smooth scroll polyfill for older browsers -->
-  </body>
+    <script src="script.js"></script>
+</body>
 </html>
-
-<style>
-#particles-js {
-  z-index: 0;
-}
-body > *:not(#particles-js) {
-  position: relative;
-  z-index: 2;
-}
-</style>
