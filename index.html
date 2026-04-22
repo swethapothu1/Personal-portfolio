@@ -1,292 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swetha Pothu - Data Analytics & Digital Marketing</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* FLOATING CERTIFICATE ANIMATION */
-        @keyframes floatCert {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swetha Pothu — Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #030712;
+  --bg2:      #070e1a;
+  --surface:  rgba(255,255,255,0.03);
+  --surface2: rgba(255,255,255,0.06);
+  --border:   rgba(255,255,255,0.06);
+  --border2:  rgba(255,255,255,0.12);
+  --c1: #a78bfa;   /* violet */
+  --c2: #f472b6;   /* pink */
+  --c3: #38bdf8;   /* sky */
+  --c4: #fb923c;   /* orange */
+  --c5: #34d399;   /* emerald */
+  --text:  #f1f5f9;
+  --muted: rgba(241,245,249,0.55);
+  --faint: rgba(241,245,249,0.2);
+  --glow1: rgba(167,139,250,0.15);
+  --glow2: rgba(244,114,182,0.12);
+  --glow3: rgba(56,189,248,0.1);
+  --ff-display: 'Playfair Display', serif;
+  --ff-body:    'Space Grotesk', sans-serif;
+  --ff-mono:    'Space Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+
+/* ─── CANVAS BACKGROUND ─── */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.6}
+
+/* ─── GRADIENT MESH ─── */
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.mesh-orb{position:absolute;border-radius:50%;filter:blur(120px);animation:drift 25s ease-in-out infinite}
+.m1{width:700px;height:700px;background:radial-gradient(circle,var(--glow1),transparent 65%);top:-200px;left:-100px;animation-delay:0s}
+.m2{width:600px;height:600px;background:radial-gradient(circle,var(--glow2),transparent 65%);top:30%;right:-150px;animation-delay:-8s}
+.m3{width:500px;height:500px;background:radial-gradient(circle,var(--glow3),transparent 65%);bottom:-100px;left:30%;animation-delay:-16s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-60px) scale(1.08)}66%{transform:translate(-30px,40px) scale(0.94)}}
+
+/* ─── NOISE ─── */
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;width:100%;z-index:200;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(3,7,18,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);padding:14px 6%}
+.nav-logo{font-family:var(--ff-mono);font-size:.95rem;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:.08em}
+.nav-logo b{color:var(--c1)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--c1)}
+.nav-resume{font-family:var(--ff-mono);font-size:.75rem;padding:9px 22px;border:1px solid var(--c1);border-radius:4px;color:var(--c1);text-decoration:none;letter-spacing:.06em;transition:all .2s}
+.nav-resume:hover{background:var(--glow1)}
+.mob-btn{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer;z-index:201}
+
+/* ─── HERO ─── */
+#home{min-height:100vh;display:flex;align-items:center;padding:140px 6% 80px;position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center;max-width:1300px;width:100%}
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:.72rem;color:var(--c5);border:1px solid rgba(52,211,153,.25);padding:6px 14px;border-radius:3px;margin-bottom:2rem;letter-spacing:.1em;text-transform:uppercase;animation:fadeUp .8s ease both}
+.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--c5);animation:blink 1.8s infinite}
+@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 6px var(--c5)}50%{opacity:.3;box-shadow:none}}
+.hero-name{font-family:var(--ff-display);font-size:clamp(3.5rem,9vw,8rem);font-weight:700;line-height:.9;letter-spacing:-.04em;margin-bottom:1.5rem;animation:fadeUp .8s .1s ease both}
+.hero-name .last{font-style:italic;color:var(--c1);display:block}
+.hero-role{font-family:var(--ff-mono);font-size:.85rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp .8s .2s ease both}
+.hero-role span{color:var(--c3);margin:0 8px}
+.hero-desc{font-size:1.05rem;color:var(--muted);max-width:480px;line-height:1.85;margin-bottom:3rem;animation:fadeUp .8s .3s ease both}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .4s ease both}
+.btn-grad{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;font-family:var(--ff-body);font-weight:600;font-size:.85rem;border-radius:5px;text-decoration:none;letter-spacing:.04em;transition:all .25s;border:none;cursor:pointer}
+.btn-grad:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(167,139,250,.35)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border:1px solid var(--border2);color:var(--muted);font-size:.85rem;border-radius:5px;text-decoration:none;letter-spacing:.04em;transition:all .25s}
+.btn-ghost:hover{border-color:var(--c3);color:var(--text)}
+/* PROFILE IMAGE */
+.hero-right{animation:fadeUp .8s .2s ease both}
+.profile-ring{width:280px;height:280px;border-radius:50%;padding:3px;background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));position:relative;flex-shrink:0}
+.profile-ring::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(167,139,250,.2);animation:spin 12s linear infinite}
+.profile-ring::after{content:'';position:absolute;inset:-16px;border-radius:50%;border:1px dashed rgba(244,114,182,.15);animation:spin 18s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.profile-img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center top;display:block;background:var(--bg2)}
+.profile-placeholder{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,rgba(167,139,250,.15),rgba(244,114,182,.1));display:flex;align-items:center;justify-content:center;font-size:5rem}
+/* Stats bar */
+.hero-stats{display:flex;gap:0;margin-top:4rem;border-top:1px solid var(--border);padding-top:2.5rem;flex-wrap:wrap;gap:2.5rem;animation:fadeUp .8s .5s ease both}
+.stat{text-align:left}
+.stat-n{font-family:var(--ff-display);font-size:2.4rem;font-weight:700;line-height:1;background:linear-gradient(135deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-l{font-size:.72rem;color:var(--muted);margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── SECTION BASE ─── */
+section{position:relative;z-index:2;padding:110px 6%}
+.s-inner{max-width:1200px;margin:0 auto}
+.s-label{font-family:var(--ff-mono);font-size:.7rem;color:var(--c1);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.8rem;display:flex;align-items:center;gap:10px}
+.s-label::before{content:'//'}
+.s-h2{font-family:var(--ff-display);font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;margin-bottom:3.5rem}
+.s-h2 i{color:var(--c1);font-style:italic}
+
+/* ─── EXPERIENCE ─── */
+#experience{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.exp-timeline{display:flex;flex-direction:column;gap:1.5rem}
+.exp-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;transition:all .35s;position:relative;overflow:hidden}
+.exp-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(167,139,250,.04),transparent);opacity:0;transition:opacity .35s}
+.exp-card:hover{border-color:rgba(167,139,250,.35);transform:translateX(6px)}
+.exp-card:hover::before{opacity:1}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.exp-co{font-family:var(--ff-display);font-size:1.4rem;font-weight:700;color:var(--text)}
+.exp-co span{color:var(--c1);font-style:italic}
+.exp-role-label{font-size:.82rem;color:var(--muted);margin-top:4px}
+.exp-pill{font-family:var(--ff-mono);font-size:.7rem;color:var(--c5);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);padding:5px 14px;border-radius:100px;white-space:nowrap}
+.exp-ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.5rem}
+.exp-ul li{font-size:.88rem;color:var(--muted);padding-left:1.4rem;position:relative;line-height:1.65}
+.exp-ul li::before{content:'▸';position:absolute;left:0;color:var(--c1);font-size:.75rem;top:.2rem}
+.exp-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font-family:var(--ff-mono);font-size:.68rem;padding:3px 10px;border-radius:3px;border:1px solid}
+.chip-v{color:var(--c1);border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.06)}
+.chip-p{color:var(--c2);border-color:rgba(244,114,182,.3);background:rgba(244,114,182,.06)}
+.chip-b{color:var(--c3);border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.06)}
+.chip-g{color:var(--c5);border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.06)}
+.chip-o{color:var(--c4);border-color:rgba(251,146,60,.3);background:rgba(251,146,60,.06)}
+
+/* ─── SKILLS ─── */
+#skills{background:var(--bg)}
+.skills-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.sk-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
+.sk-card:hover{border-color:var(--border2);transform:translateY(-5px)}
+.sk-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--c1),var(--c2));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.sk-card:hover::after{transform:scaleX(1)}
+.sk-icon{font-size:1.6rem;margin-bottom:1rem;display:block}
+.sk-title{font-family:var(--ff-body);font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:.8rem}
+.sk-pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.sk-pill{font-size:.72rem;padding:3px 9px;border-radius:3px;background:var(--surface2);border:1px solid var(--border2);color:var(--muted)}
+
+/* ─── PROJECTS ─── */
+#projects{background:var(--bg2)}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:all .35s;cursor:pointer}
+.proj-card:hover{border-color:var(--border2);transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.proj-banner{height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.proj-banner-inner{font-size:3.5rem;position:relative;z-index:1;filter:drop-shadow(0 4px 20px rgba(0,0,0,.5))}
+.pb-violet{background:linear-gradient(135deg,rgba(167,139,250,.15) 0%,rgba(244,114,182,.08) 100%)}
+.pb-sky{background:linear-gradient(135deg,rgba(56,189,248,.15) 0%,rgba(52,211,153,.08) 100%)}
+.pb-orange{background:linear-gradient(135deg,rgba(251,146,60,.15) 0%,rgba(251,191,36,.08) 100%)}
+.pb-pink{background:linear-gradient(135deg,rgba(244,114,182,.15) 0%,rgba(167,139,250,.08) 100%)}
+.pb-green{background:linear-gradient(135deg,rgba(52,211,153,.15) 0%,rgba(56,189,248,.08) 100%)}
+.proj-body{padding:1.8rem;flex:1;display:flex;flex-direction:column}
+.proj-body h3{font-family:var(--ff-body);font-weight:700;font-size:1.05rem;color:var(--text);margin-bottom:.7rem;line-height:1.3}
+.proj-body p{font-size:.84rem;color:var(--muted);line-height:1.75;margin-bottom:1.2rem;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.proj-tag{font-family:var(--ff-mono);font-size:.67rem;padding:2px 8px;border-radius:3px;background:var(--surface2);border:1px solid var(--border);color:var(--faint)}
+.proj-links{display:flex;gap:1.2rem;margin-top:auto}
+.proj-links a{font-size:.78rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:opacity .2s}
+.proj-links a:hover{opacity:.7}
+.lnk-t{color:var(--c1)}
+.lnk-g{color:var(--c3)}
+
+/* ─── CERTIFICATIONS ─── */
+#certifications{background:var(--bg)}
+.cert-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;display:flex;gap:1.4rem;align-items:flex-start;transition:all .3s}
+.cert-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.cert-badge-wrap{width:60px;height:60px;border-radius:12px;overflow:hidden;border:1px solid var(--border2);flex-shrink:0;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.cert-badge-wrap img{width:100%;height:100%;object-fit:cover}
+.cert-text h3{font-family:var(--ff-body);font-weight:700;font-size:.95rem;color:var(--text);margin-bottom:.3rem;line-height:1.35}
+.cert-issuer{font-size:.78rem;color:var(--c1);margin-bottom:.4rem}
+.cert-date{font-family:var(--ff-mono);font-size:.7rem;color:var(--muted);margin-bottom:.8rem}
+.cert-link{font-size:.78rem;color:var(--c3);text-decoration:none;display:inline-flex;align-items:center;gap:4px;font-weight:600}
+.cert-link:hover{color:var(--c5)}
+
+/* ─── CONTACT ─── */
+#contact{background:var(--bg2)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.contact-tagline{font-family:var(--ff-display);font-size:1.6rem;font-style:italic;color:var(--muted);line-height:1.5;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
+.clinks{display:flex;flex-direction:column;gap:.8rem}
+.clink{display:flex;align-items:center;gap:1rem;padding:1rem 1.2rem;border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);background:var(--surface);transition:all .25s}
+.clink:hover{border-color:rgba(167,139,250,.4);background:rgba(167,139,250,.05);transform:translateX(5px)}
+.clink-ico{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.ico-v{background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.2)}
+.ico-p{background:rgba(244,114,182,.12);border:1px solid rgba(244,114,182,.2)}
+.ico-b{background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.2)}
+.ico-g{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.2)}
+.clink-main{font-size:.88rem;font-weight:500}
+.clink-sub{font-size:.73rem;color:var(--muted);margin-top:1px}
+/* form */
+.cf{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem}
+.cf h3{font-family:var(--ff-body);font-weight:700;font-size:1.1rem;margin-bottom:1.8rem;color:var(--text)}
+.cf-fields{display:flex;flex-direction:column;gap:1rem}
+.cf input,.cf textarea{width:100%;padding:12px 16px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--ff-body);font-size:.88rem;outline:none;transition:border .2s;resize:none}
+.cf input::placeholder,.cf textarea::placeholder{color:var(--faint)}
+.cf input:focus,.cf textarea:focus{border-color:rgba(167,139,250,.5)}
+.cf textarea{height:110px}
+.cf-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;font-family:var(--ff-body);font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;margin-top:.5rem;transition:all .25s}
+.cf-btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(167,139,250,.3)}
+
+/* ─── FOOTER ─── */
+footer{border-top:1px solid var(--border);padding:2rem 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:relative;z-index:2}
+.ft-l{font-family:var(--ff-mono);font-size:.72rem;color:var(--muted)}
+.ft-r{display:flex;gap:1.5rem}
+.ft-r a{font-size:.72rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.ft-r a:hover{color:var(--c1)}
+
+/* ─── REVEAL ─── */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-right{display:flex;justify-content:center;order:-1}
+  .profile-ring{width:200px;height:200px}
+  .skills-bento{grid-template-columns:1fr 1fr}
+  .contact-wrap{grid-template-columns:1fr;gap:3rem}
+  section{padding:80px 5%}
+}
+@media(max-width:640px){
+  .nav-links,.nav-resume{display:none}
+  .mob-btn{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;top:60px;background:rgba(3,7,18,.97);backdrop-filter:blur(24px);padding:3rem 6%;gap:2rem;z-index:199}
+  .nav-links.open a{font-size:1.3rem}
+  .skills-bento{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+}
+</style>
 </head>
 <body>
-    <!-- Black Background with City Lights -->
-    <div class="fluid-background">
-        <div class="city-lights">
-            <div class="light light-1"></div>
-            <div class="light light-2"></div>
-            <div class="light light-3"></div>
-            <div class="light light-4"></div>
-            <div class="light light-5"></div>
-            <div class="light light-6"></div>
-            <div class="light light-7"></div>
-            <div class="light light-8"></div>
-            <div class="light light-9"></div>
-            <div class="light light-10"></div>
-            <div class="light light-11"></div>
-            <div class="light light-12"></div>
-            <div class="light light-13"></div>
-            <div class="light light-14"></div>
-            <div class="light light-15"></div>
-        </div>
-    </div>
-    
-    <!-- Cursor Followers and Floating Elements -->
-    <div class="cursor-follower"></div>
-    <div class="cursor-follower-2"></div>
-    <div class="floating-blue"></div>
-    <div class="floating-green"></div>
-    <div class="floating-pink"></div>
-    <div class="floating-orange"></div>
-    <div class="floating-purple"></div>
-    
-    <!-- Navigation -->
-    <!-- Navigation -->
-<nav id="navbar" style="padding: 5px 5% !important; height: auto !important;">
-    <div class="nav-container">
-        <!-- MORE VISIBLE LOGO WITH GLOW EFFECT AND THINNER BAR -->
-        <a href="#home" class="logo" style="display: inline-block;">
-            <img src="assets/logo.png" alt="Swetha Pothu Logo" style="height: 120px !important; width: auto !important; filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.5)) !important;">
-        </a>
-        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-</nav>
-    
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Hello, I'm<br>Swetha Pothu</h1>
-            <p>Data Analytics & Digital Marketing</p>
-            <a href="assets/swetha_resume.pdf" class="cta-button">View My Work</a>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="content-section">
-        <h2 class="fade-in">About Me</h2>
-        <div class="about-content">
-            <div class="about-image fade-in">
-                <img src="assets/about-pic.png" alt="Swetha Pothu" class="profile-image">
-            </div>
-            <div class="about-text fade-in">
-                <p>Business analytics enthusiast with a masters from Clark University, skilled at</p>
-                <p>turning complex data into clear, actionable insights. I specialize in driving growth</p>
-                <p>through data-driven strategies in digital marketing, revenue optimization, and KPI</p>
-                <p>design. Creative and detail-oriented, I thrive on solving challenges that blend</p>
-                <p>numbers with real-world impact.</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="fade-in">Core Competencies</h2>
-        <div class="skills-grid">
-            <div class="skill-card fade-in">
-                <h3>Data Analytics & ML</h3>
-                <p>Python, R, SQL, Statistical Analysis, Predictive Modeling, Machine Learning, Time Series Analysis</p>
-            </div>
-            <div class="skill-card fade-in">
-                <h3>Digital Marketing</h3>
-                <p>Google Analytics 4, A/B Testing, Campaign Optimization, SEO, ROI Analysis, Customer Behavior</p>
-            </div>
-            <div class="skill-card fade-in">
-                <h3>Business Intelligence</h3>
-                <p>Tableau, Data Visualization, KPI Development, Revenue Cycle Management, Dashboard Design</p>
-            </div>
-            <div class="skill-card fade-in">
-                <h3>Market Research</h3>
-                <p>Survey Design, Market Segmentation, Consumer Analysis, Competitive Intelligence</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Certifications Section -->
-    <section id="certifications" class="content-section">
-        <h2 class="fade-in">Certifications</h2>
-        <div class="certifications-grid">
-            <div class="cert-card fade-in">
-                <!-- FLOATING CERTIFICATE IMAGE -->
-                <img src="assets/google analytics image.png" alt="Google Analytics Certificate" class="cert-img" style="animation: floatCert 3s ease-in-out infinite; width: 120px !important; height: 120px !important; object-fit: contain; display: block; margin: 0 auto 20px;">
-                <h3>Google Analytics 4 Certification</h3>
-                <div class="cert-issuer">Google</div>
-                <div class="cert-date">Completed: November 30, 2023</div>
-                <div class="cert-date">Expires: November 30, 2024</div>
-                <div><a href="assets/google analytics image.png" target="_blank">View Certificate</a></div>
-            </div>
-            <div class="cert-card fade-in">
-                <!-- FLOATING CERTIFICATE IMAGE -->
-                <img src="assets/digital image.png" alt="Digital Marketing Simternship Certificate" class="cert-img" style="animation: floatCert 3s ease-in-out infinite; animation-delay: 0.5s; width: 120px !important; height: 120px !important; object-fit: contain; display: block; margin: 0 auto 20px;">
-                <h3>Digital Marketing Simternship</h3>
-                <div class="cert-issuer">Stukent</div>
-                <div class="cert-date">Completed: December 07, 2023</div>
-                <div><a href="assets/rcr image.png" target="_blank">View Certificate</a></div>
-            </div>
-            <div class="cert-card fade-in">
-                <!-- FLOATING CERTIFICATE IMAGE -->
-                <img src="assets/rcr image.png" alt="RCR CITI Certificate" class="cert-img" style="animation: floatCert 3s ease-in-out infinite; animation-delay: 1s; width: 120px !important; height: 120px !important; object-fit: contain; display: block; margin: 0 auto 20px;">
-                <h3>Responsible Conduct of Research (RCR)</h3>
-                <div class="cert-issuer">CITI Program - Clark University</div>
-                <div class="cert-date">Completed: February 24, 2024</div>
-                <div class="cert-date">Expires: February 24, 2027</div>
-                <div><a href="assets/RCR_BASIC+HUMAN_SUBJECTS_MKT_5401_1_POTHU_SWETHA.pdf" target="_blank">View Certificate</a></div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section id="projects" class="content-section">
-        <h2 class="fade-in">Featured Projects</h2>
-        <div class="projects-grid">
-            <!-- Airline Project Card -->
-            <div class="project-card fade-in">
-                <!-- FIXED PROJECT IMAGE -->
-                <div class="project-image" style="background: url('assets/project\ -5.png') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
-                <div class="project-content">
-                    <h3>Airline In-Flight Catering Analysis</h3>
-                    <p>Comprehensive survey-based analysis of passenger satisfaction comparing Delta and American Airlines using advanced statistics.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Excel</span>
-                        <span class="tech-tag">Tableau</span>
-                        <span class="tech-tag">R</span>
-                        <span class="tech-tag">Statistical Analysis</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://public.tableau.com/views/AirlineMarketingCampaignPassengerPreferencesSatisfaction/Dashboard1" target="_blank">View on Tableau →</a>
-                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Bitcoin Project Card -->
-            <div class="project-card fade-in">
-                <!-- FIXED PROJECT IMAGE -->
-                <div class="project-image" style="background: url('assets/project-2.jpg') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
-                <div class="project-content">
-                    <h3>Bitcoin Price Prediction & Volatility</h3>
-                    <p>Analyzed 4.8M+ minute-level Bitcoin trades to identify patterns and volatility zones with interactive dashboards.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Pandas</span>
-                        <span class="tech-tag">Tableau</span>
-                        <span class="tech-tag">Time Series</span>
-                        <span class="tech-tag">Machine Learning</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://public.tableau.com/views/BitcoinPriceStrategyVolatilityDashboard20122021/Dashboard1" target="_blank">View on Tableau →</a>
-                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Airbnb Project Card -->
-            <div class="project-card fade-in">
-                <!-- FIXED PROJECT IMAGE -->
-                <div class="project-image" style="background: url('assets/project-1.jpg') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
-                <div class="project-content">
-                    <h3>Airbnb NYC Price Prediction</h3>
-                    <p>Built predictive models using Random Forest (93% accuracy) for NYC Airbnb listings with interactive map visualization.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">R</span>
-                        <span class="tech-tag">Random Forest</span>
-                        <span class="tech-tag">Tableau</span>
-                        <span class="tech-tag">Linear Regression</span>
-                        <span class="tech-tag">Data Visualization</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://public.tableau.com/views/AirbnbNYCPricePredictionAnalytics/AirbnbNYCPriceAvailabilityListingInsights" target="_blank">View on Tableau →</a>
-                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Inventory Project Card -->
-            <div class="project-card fade-in">
-                <!-- FIXED PROJECT IMAGE -->
-                <div class="project-image" style="background: url('assets/project-3.jpg') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
-                <div class="project-content">
-                    <h3>Inventory Management Dashboard</h3>
-                    <p>Dashboard monitoring product stock levels, reorder thresholds, and category-specific distribution.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Tableau</span>
-                        <span class="tech-tag">Data Visualization</span>
-                        <span class="tech-tag">KPI Metrics</span>
-                        <span class="tech-tag">Business Intelligence</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://public.tableau.com/views/InventoryManagementSystemDashboard/InventoryManagementDashboard" target="_blank">View on Tableau →</a>
-                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Shopify Project Card -->
-            <div class="project-card fade-in">
-                <!-- FIXED PROJECT IMAGE -->
-                <div class="project-image" style="background: url('assets/project-4.png') center/contain no-repeat; background-color: #f5f5f5; height: 250px !important;"></div>
-                <div class="project-content">
-                    <h3>Shopify E-Commerce Growth Strategy</h3>
-                    <p>Managed Shopify store, increased traffic by 40% and engagement by 25% through conversion optimization and campaigns.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Shopify</span>
-                        <span class="tech-tag">Digital Marketing</span>
-                        <span class="tech-tag">Conversion Optimization</span>
-                        <span class="tech-tag">Social Media</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://public.tableau.com/views/InventoryManagementSystemDashboard/InventoryManagementDashboard" target="_blank">View on Tableau →</a>
-                        <a href="https://github.com/pothu14" target="_blank">View on GitHub →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <h2 class="fade-in">Let's Connect</h2>
-        <div class="contact-grid">
-            <a href="mailto:swethapothu99@gmail.com" class="contact-item">
-                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#3b82f6">
-                    <rect x="10" y="30" width="80" height="50" rx="5" fill="none" stroke="#3b82f6" stroke-width="3"/>
-                    <path d="M15 35 L50 55 L85 35" stroke="#3b82f6" stroke-width="3" fill="none"/>
-                </svg>
-                <span>Email</span>
-            </a>
-            <a href="tel:774-519-0176" class="contact-item">
-                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#10b981">
-                    <rect x="30" y="15" width="40" height="70" rx="8" fill="none" stroke="#10b981" stroke-width="3"/>
-                    <circle cx="50" cy="75" r="3" fill="#10b981"/>
-                    <line x1="35" y1="25" x2="65" y2="25" stroke="#10b981" stroke-width="2"/>
-                </svg>
-                <span>Phone</span>
-            </a>
-            <a href="https://www.linkedin.com/in/pothu-swetha-63246b203/" class="contact-item" target="_blank">
-                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#0e76a8">
-                    <rect x="15" y="15" width="70" height="70" rx="10" fill="#0e76a8"/>
-                    <rect x="25" y="40" width="10" height="30" fill="white"/>
-                    <circle cx="30" cy="30" r="5" fill="white"/>
-                    <path d="M45 40 L45 70 L55 70 L55 55 C55 50 58 47 62 47 C66 47 67 50 67 55 L67 70 L77 70 L77 52 C77 42 72 38 65 38 C60 38 55 41 55 41 L55 40 Z" fill="white"/>
-                </svg>
-                <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/pothu14" class="contact-item" target="_blank">
-                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="#333">
-                    <circle cx="50" cy="50" r="35" fill="#333"/>
-                    <path d="M50 20 C33 20 20 33 20 50 C20 63 28 75 40 78 L40 65 C35 66 32 63 31 59 C30 56 28 55 28 55 C27 54 29 54 30 55 C33 56 35 59 36 61 C38 65 42 64 44 63 C44 61 45 59 47 58 C38 57 30 53 30 42 C30 38 32 35 35 33 C34 32 32 28 36 23 C36 23 39 22 44 26 C46 25 48 25 50 25 C52 25 54 25 56 26 C61 22 64 23 64 23 C68 28 66 32 65 33 C68 35 70 38 70 42 C70 53 62 57 53 58 C55 59 56 62 56 65 L56 78 C68 75 80 63 80 50 C80 33 67 20 50 20 Z" fill="white"/>
-                </svg>
-                <span>GitHub</span>
-            </a>
-        </div>
-    </section>
 
-    <script src="script.js"></script>
+<canvas id="bg-canvas"></canvas>
+<div class="mesh"><div class="mesh-orb m1"></div><div class="mesh-orb m2"></div><div class="mesh-orb m3"></div></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">SP<b>.</b>dev</a>
+  <ul class="nav-links" id="navL">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="assets/Swetha_Pothu_Data_Analyst.pdf" class="nav-resume" target="_blank">Resume ↗</a>
+  <button class="mob-btn" id="mobB">☰</button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-grid" style="max-width:1300px;width:100%">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Open to new opportunities</div>
+      <h1 class="hero-name">Swetha<span class="last">Pothu.</span></h1>
+      <p class="hero-role">Data Analyst<span>·</span>SQL<span>·</span>Python<span>·</span>AWS<span>·</span>Power BI</p>
+      <p class="hero-desc">3+ years turning complex healthcare, Medicaid, and supply chain data into dashboards, ETL pipelines, and predictive models that drive real decisions. Currently at McKesson.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-grad">View Projects →</a>
+        <a href="#contact" class="btn-ghost">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Years Experience</div></div>
+        <div class="stat"><div class="stat-n">23k</div><div class="stat-l">SKUs Analysed</div></div>
+        <div class="stat"><div class="stat-n">93%</div><div class="stat-l">Model Accuracy</div></div>
+        <div class="stat"><div class="stat-n">4.8M</div><div class="stat-l">Data Points</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="profile-ring">
+        <img src="assets/about-pic.png" alt="Swetha Pothu" class="profile-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="profile-placeholder" style="display:none">👩‍💻</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="s-inner">
+    <p class="s-label rv">Work Experience</p>
+    <h2 class="s-h2 rv">Where I've <i>delivered</i></h2>
+    <div class="exp-timeline">
+
+      <div class="exp-card rv">
+        <div class="exp-top">
+          <div>
+            <div class="exp-co">Mc<span>Kesson</span></div>
+            <div class="exp-role-label">Data Analyst · USA</div>
+          </div>
+          <div class="exp-pill">Jul 2025 – Present</div>
+        </div>
+        <ul class="exp-ul">
+          <li>Built Power BI (DAX) dashboards tracking SKU demand, OTIF, SLA across 23,000+ SKUs — reduced stockouts by 18%</li>
+          <li>Developed automated ETL pipelines with Python, Airflow, and AWS (S3, Redshift) with Star-schema dimensional modeling</li>
+          <li>Applied scikit-learn and R for predictive modeling to improve forecast accuracy across assortment planning</li>
+          <li>Executed SQL-driven cohort segmentation and A/B testing to evaluate channel performance and marketing ROI</li>
+          <li>Implemented enterprise data governance including data lineage, MDM, and metadata management</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="chip chip-v">Power BI</span><span class="chip chip-v">DAX</span><span class="chip chip-b">AWS Redshift</span><span class="chip chip-b">AWS S3</span><span class="chip chip-g">Airflow</span><span class="chip chip-g">scikit-learn</span><span class="chip chip-p">A/B Testing</span><span class="chip chip-o">SQL</span>
+        </div>
+      </div>
+
+      <div class="exp-card rv d1">
+        <div class="exp-top">
+          <div>
+            <div class="exp-co">Aetna <span>Health</span></div>
+            <div class="exp-role-label">Data Analyst · USA</div>
+          </div>
+          <div class="exp-pill">Sep 2024 – Jun 2025</div>
+        </div>
+        <ul class="exp-ul">
+          <li>Analyzed Medicaid claims and EHR datasets to assess preventive care gaps across female member populations</li>
+          <li>Designed ETL workflows using AWS Glue and S3, loading curated data into Redshift for HEDIS regulatory reporting</li>
+          <li>Developed Power BI dashboards with DAX to track maternal health outcomes and demographic disparities</li>
+          <li>Performed predictive modeling using Python to engineer risk features for missed screenings and adverse outcomes</li>
+          <li>Conducted cohort stratification and A/B testing to evaluate targeted preventive care outreach campaigns</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="chip chip-b">AWS Glue</span><span class="chip chip-b">Amazon Redshift</span><span class="chip chip-v">Power BI</span><span class="chip chip-g">HEDIS</span><span class="chip chip-g">Python</span><span class="chip chip-p">EHR Data</span><span class="chip chip-o">SQL</span>
+        </div>
+      </div>
+
+      <div class="exp-card rv d2">
+        <div class="exp-top">
+          <div>
+            <div class="exp-co">LTI <span>Mindtree</span></div>
+            <div class="exp-role-label">Data Analyst · India</div>
+          </div>
+          <div class="exp-pill">Sep 2019 – Jul 2021</div>
+        </div>
+        <ul class="exp-ul">
+          <li>Built Tableau dashboards with KPI frameworks enabling leadership to monitor revenue leakage and churn trends</li>
+          <li>Developed customer 360° analytical views using Pandas and NumPy for segmentation and personalization</li>
+          <li>Constructed scenario-based forecasting models using regression to support investment planning decisions</li>
+          <li>Executed enterprise data discovery using SQL and Alteryx across ERP, CRM, and digital datasets</li>
+        </ul>
+        <div class="exp-chips">
+          <span class="chip chip-v">Tableau</span><span class="chip chip-o">SQL</span><span class="chip chip-g">Python</span><span class="chip chip-b">Alteryx</span><span class="chip chip-p">Regression</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="s-inner">
+    <p class="s-label rv">Core Competencies</p>
+    <h2 class="s-h2 rv">What I <i>bring</i></h2>
+    <div class="skills-bento">
+      <div class="sk-card rv"><span class="sk-icon">⚡</span><div class="sk-title">Data Analysis & ML</div><div class="sk-pills"><span class="sk-pill">Python</span><span class="sk-pill">Pandas</span><span class="sk-pill">NumPy</span><span class="sk-pill">scikit-learn</span><span class="sk-pill">R</span><span class="sk-pill">Statsmodels</span><span class="sk-pill">EDA</span><span class="sk-pill">Cohort Analysis</span></div></div>
+      <div class="sk-card rv d1"><span class="sk-icon">☁️</span><div class="sk-title">Cloud & ETL</div><div class="sk-pills"><span class="sk-pill">AWS Glue</span><span class="sk-pill">AWS S3</span><span class="sk-pill">Redshift</span><span class="sk-pill">AWS Athena</span><span class="sk-pill">Airflow</span><span class="sk-pill">SSIS</span><span class="sk-pill">Star Schema</span></div></div>
+      <div class="sk-card rv d2"><span class="sk-icon">📊</span><div class="sk-title">Business Intelligence</div><div class="sk-pills"><span class="sk-pill">Power BI</span><span class="sk-pill">DAX</span><span class="sk-pill">Tableau</span><span class="sk-pill">QlikView</span><span class="sk-pill">HEDIS</span><span class="sk-pill">KPI Design</span><span class="sk-pill">Storytelling</span></div></div>
+      <div class="sk-card rv d1"><span class="sk-icon">🗄️</span><div class="sk-title">Databases & SQL</div><div class="sk-pills"><span class="sk-pill">Advanced SQL</span><span class="sk-pill">MySQL</span><span class="sk-pill">MS SQL Server</span><span class="sk-pill">Query Optimization</span><span class="sk-pill">Data Warehousing</span></div></div>
+      <div class="sk-card rv d2"><span class="sk-icon">🛡️</span><div class="sk-title">Data Governance</div><div class="sk-pills"><span class="sk-pill">MDM</span><span class="sk-pill">Data Lineage</span><span class="sk-pill">Metadata Mgmt</span><span class="sk-pill">Validation Rules</span><span class="sk-pill">Compliance</span><span class="sk-pill">Audit Reporting</span></div></div>
+      <div class="sk-card rv d3"><span class="sk-icon">📣</span><div class="sk-title">Digital Marketing</div><div class="sk-pills"><span class="sk-pill">Google Analytics 4</span><span class="sk-pill">SEO</span><span class="sk-pill">A/B Testing</span><span class="sk-pill">Campaign Optimization</span><span class="sk-pill">ROI Analysis</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="s-inner">
+    <p class="s-label rv">Portfolio</p>
+    <h2 class="s-h2 rv">Selected <i>projects</i></h2>
+    <div class="proj-grid">
+
+      <div class="proj-card rv">
+        <div class="proj-banner pb-violet"><div class="proj-banner-inner">₿</div></div>
+        <div class="proj-body">
+          <h3>Bitcoin Price Strategy & Volatility</h3>
+          <p>Analyzed 4.8M+ minute-level Bitcoin trades from 2012–2021. Engineered volatility metrics, built KPIs, and created an interactive Tableau dashboard with heatmaps and trend analysis.</p>
+          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Pandas</span><span class="proj-tag">Tableau</span><span class="proj-tag">Time Series</span></div>
+          <div class="proj-links">
+            <a href="https://public.tableau.com/views/BitcoinPriceStrategyVolatilityDashboard20122021/Dashboard1" target="_blank" class="lnk-t">Tableau ↗</a>
+            <a href="https://github.com/swethapothu1/bitcoin-price-prediction" target="_blank" class="lnk-g">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d1">
+        <div class="proj-banner pb-sky"><div class="proj-banner-inner">🏙️</div></div>
+        <div class="proj-body">
+          <h3>Airbnb NYC Price Prediction</h3>
+          <p>Built Random Forest models achieving 93% accuracy for NYC Airbnb listings. Full EDA, dummy encoding, VIF checks. Interactive Tableau dashboard with heatmaps, scatter plots, and NYC map.</p>
+          <div class="proj-tags"><span class="proj-tag">R</span><span class="proj-tag">Random Forest</span><span class="proj-tag">Tableau</span><span class="proj-tag">Linear Regression</span></div>
+          <div class="proj-links">
+            <a href="https://public.tableau.com/views/AirbnbNYCPricePredictionAnalytics/AirbnbNYCPriceAvailabilityListingInsights" target="_blank" class="lnk-t">Tableau ↗</a>
+            <a href="https://github.com/swethapothu1/airbnb-price-prediction" target="_blank" class="lnk-g">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d2">
+        <div class="proj-banner pb-orange"><div class="proj-banner-inner">✈️</div></div>
+        <div class="proj-body">
+          <h3>Airline In-Flight Catering Analysis</h3>
+          <p>Survey-based analysis comparing Delta vs American Airlines on passenger satisfaction, cultural preferences, and sustainability using Likert-scale visualizations and statistical analysis.</p>
+          <div class="proj-tags"><span class="proj-tag">Excel</span><span class="proj-tag">Tableau</span><span class="proj-tag">R</span><span class="proj-tag">Survey Design</span></div>
+          <div class="proj-links">
+            <a href="https://public.tableau.com/views/AirlineMarketingCampaignPassengerPreferencesSatisfaction/Dashboard1" target="_blank" class="lnk-t">Tableau ↗</a>
+            <a href="https://github.com/swethapothu1/marketing-campaign-performance-analysis" target="_blank" class="lnk-g">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card rv">
+        <div class="proj-banner pb-green"><div class="proj-banner-inner">📦</div></div>
+        <div class="proj-body">
+          <h3>Inventory Management Dashboard</h3>
+          <p>Interactive Tableau dashboard monitoring product stock levels, reorder thresholds, and category-specific distribution with total stock value KPIs and purchasing trend analysis.</p>
+          <div class="proj-tags"><span class="proj-tag">Tableau</span><span class="proj-tag">KPI Metrics</span><span class="proj-tag">BI</span><span class="proj-tag">Data Visualization</span></div>
+          <div class="proj-links">
+            <a href="https://public.tableau.com/views/InventoryManagementSystemDashboard/InventoryManagementDashboard" target="_blank" class="lnk-t">Tableau ↗</a>
+            <a href="https://github.com/swethapothu1/Inventory-Management-System-Dashboard" target="_blank" class="lnk-g">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card rv d1">
+        <div class="proj-banner pb-pink"><div class="proj-banner-inner">🛒</div></div>
+        <div class="proj-body">
+          <h3>Shopify E-Commerce Growth</h3>
+          <p>Developed and managed a Shopify store end-to-end. Implemented digital marketing strategies increasing website traffic by 40% and engagement by 25% within three months.</p>
+          <div class="proj-tags"><span class="proj-tag">Shopify</span><span class="proj-tag">Google Ads</span><span class="proj-tag">SEO</span><span class="proj-tag">Social Media</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/swethapothu1" target="_blank" class="lnk-g">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="s-inner">
+    <p class="s-label rv">Credentials</p>
+    <h2 class="s-h2 rv"><i>Certifications</i></h2>
+    <div class="cert-row">
+      <div class="cert-card rv">
+        <div class="cert-badge-wrap"><img src="assets/google analytics image.png" alt="GA4" onerror="this.style.display='none';this.parentElement.textContent='📈'"></div>
+        <div class="cert-text">
+          <h3>Google Analytics 4 Certification</h3>
+          <div class="cert-issuer">Google</div>
+          <div class="cert-date">Completed: November 30, 2023</div>
+          <a href="assets/google analytics image.png" target="_blank" class="cert-link">View Certificate ↗</a>
+        </div>
+      </div>
+      <div class="cert-card rv d1">
+        <div class="cert-badge-wrap"><img src="assets/digital image.png" alt="Stukent" onerror="this.style.display='none';this.parentElement.textContent='🎯'"></div>
+        <div class="cert-text">
+          <h3>Digital Marketing Simternship</h3>
+          <div class="cert-issuer">Stukent</div>
+          <div class="cert-date">Completed: December 07, 2023</div>
+          <a href="assets/digital image.png" target="_blank" class="cert-link">View Certificate ↗</a>
+        </div>
+      </div>
+      <div class="cert-card rv d2">
+        <div class="cert-badge-wrap"><img src="assets/rcr image.png" alt="CITI" onerror="this.style.display='none';this.parentElement.textContent='🔬'"></div>
+        <div class="cert-text">
+          <h3>Responsible Conduct of Research</h3>
+          <div class="cert-issuer">CITI Program · Clark University</div>
+          <div class="cert-date">Feb 24, 2024 · Expires: Feb 2027</div>
+          <a href="assets/RCR_BASIC+HUMAN_SUBJECTS_MKT_5401_1_POTHU_SWETHA.pdf" target="_blank" class="cert-link">View Certificate ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="s-inner">
+    <p class="s-label rv">Let's Connect</p>
+    <h2 class="s-h2 rv">Open to <i>opportunities</i></h2>
+    <div class="contact-wrap">
+      <div class="rv">
+        <p class="contact-tagline">"Looking for Data Analyst roles in healthcare, supply chain, and financial domains. Based in Worcester, MA — open to remote and hybrid."</p>
+        <div class="clinks">
+          <a href="mailto:swethapothu76@gmail.com" class="clink">
+            <div class="clink-ico ico-v">✉️</div>
+            <div><div class="clink-main">swethapothu76@gmail.com</div><div class="clink-sub">Email</div></div>
+          </a>
+          <a href="tel:7745190176" class="clink">
+            <div class="clink-ico ico-p">📱</div>
+            <div><div class="clink-main">+1 (774) 519-0176</div><div class="clink-sub">Phone</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/pothu-swetha-63246b203/" target="_blank" class="clink">
+            <div class="clink-ico ico-b">💼</div>
+            <div><div class="clink-main">pothu-swetha-63246b203</div><div class="clink-sub">LinkedIn</div></div>
+          </a>
+          <a href="https://github.com/swethapothu1" target="_blank" class="clink">
+            <div class="clink-ico ico-g">🐙</div>
+            <div><div class="clink-main">github.com/swethapothu1</div><div class="clink-sub">GitHub</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="cf rv d1">
+        <h3>Send a message</h3>
+        <div class="cf-fields">
+          <input type="text" placeholder="Your name">
+          <input type="email" placeholder="Your email">
+          <textarea placeholder="Your message"></textarea>
+          <button class="cf-btn">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-l">© 2026 Swetha Pothu · Data Analyst · Worcester, MA</div>
+  <div class="ft-r">
+    <a href="https://github.com/swethapothu1" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/pothu-swetha-63246b203/" target="_blank">LinkedIn</a>
+    <a href="mailto:swethapothu76@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+
+// Mobile menu
+const mobB = document.getElementById('mobB');
+const navL = document.getElementById('navL');
+mobB.addEventListener('click',()=>{
+  navL.classList.toggle('open');
+  mobB.textContent = navL.classList.contains('open')?'✕':'☰';
+});
+navL.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navL.classList.remove('open'); mobB.textContent='☰';
+}));
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// Animated canvas particles
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W,H,particles=[];
+function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight}
+resize();
+window.addEventListener('resize',()=>{resize();init()});
+function init(){
+  particles=[];
+  const count=Math.floor(W*H/18000);
+  for(let i=0;i<count;i++){
+    particles.push({
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.5+.3,
+      vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25,
+      o:Math.random()*.5+.1,
+      c:['#a78bfa','#f472b6','#38bdf8','#34d399'][Math.floor(Math.random()*4)]
+    });
+  }
+}
+init();
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+    if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=p.c;
+    ctx.globalAlpha=p.o;
+    ctx.fill();
+  });
+  ctx.globalAlpha=1;
+  // draw connecting lines
+  particles.forEach((p,i)=>{
+    for(let j=i+1;j<particles.length;j++){
+      const q=particles[j];
+      const dist=Math.hypot(p.x-q.x,p.y-q.y);
+      if(dist<120){
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y);
+        ctx.strokeStyle='rgba(167,139,250,'+(.08*(1-dist/120))+')';
+        ctx.lineWidth=.5;
+        ctx.stroke();
+      }
+    }
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
 </body>
 </html>
