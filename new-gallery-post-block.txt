@@ -1,0 +1,11 @@
+<article class="post rv">
+      <div class="post-head"><img src="assets/author-portrait.jpg" alt=""><div class="post-user">pothu.swetha10</div></div>
+      <div class="post-media"><img src="assets/gallery-post-07.jpg" alt="New gallery photo"></div>
+      <div class="post-actions">
+        <button class="like-btn" type="button" aria-label="Like this post"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.7C6.4 17 3 13.6 3 9.9 3 7.2 5 5 7.7 5c1.7 0 3.3.9 4.3 2.4C13 5.9 14.6 5 16.3 5 19 5 21 7.2 21 9.9c0 3.7-3.4 7.1-9 10.8z"/></svg><span class="like-n">0</span></button>
+        <button class="cmt-btn" type="button" aria-label="Jump to comments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5z"/></svg><span class="cmt-n">0</span></button>
+      </div>
+      <p class="post-cap"><b>pothu.swetha10</b></p>
+      <div class="post-comments"><p class="cmt-empty">No comments yet — be the first to say something kind.</p></div>
+      <form class="cmt-form"><input type="text" placeholder="Add a comment…" aria-label="Add a comment"><button type="submit">Post</button></form>
+    </article>
